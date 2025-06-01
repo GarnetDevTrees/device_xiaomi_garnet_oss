@@ -4,9 +4,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# Call the MiuiCamera setup
-$(call inherit-product-if-exists, device/xiaomi/miuicamera-garnet/device.mk)
-
 # Enable virtual A/B OTA
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 
@@ -18,6 +15,9 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 # Qualcomm
 $(call inherit-product, hardware/qcom-caf/common/common.mk)
+
+# Platform
+TARGET_BOARD_PLATFORM := parrot
 
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
@@ -561,10 +561,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
-
-# VNDK
-PRODUCT_PACKAGES += \
-    libutils.vendor
 
 # WiFi
 PRODUCT_PACKAGES += \
